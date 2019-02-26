@@ -98,5 +98,6 @@ margin-bottom: 62px;
     font-weight: regular;
     font-size: 20px;	
     line-height: 20px; /*  накосячил, не поймуд как выровнять с чекбоксом */
-    padding-bottom: 5px;
+    padding-bottom: 15px;
+    padding-left: 10px;
 }
