@@ -44,18 +44,26 @@ margin-bottom: 62px;
 
 .card-item {
     height: 100%;
-    width: 100%;
-    max-height: 320px;
-    max-width: 580px;
+    flex-basis: calc(50% - 20px);
     border-radius: 6px;
     background-color: #ffffff;
     padding: 20px;
+    margin: 10px;  
 }
+
+.card-item:nth-child(2n) {
+    margin-right: 0;
+}
+
+.card-item:nth-child(2n + 1) {
+    margin-left: 0;
+}
+
 
 .card-header {
     display: flex;
     width: 100%;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
 }
 
@@ -74,13 +82,16 @@ margin-bottom: 62px;
 }
 .card-body-checkbox {
     display: flex;
+    max-width: 580px;
+    min-height: 40px;
     flex-direction: row;
     align-items: flex-start;
+    padding-right: 60px;
 }
 
-.tick-box {
-    width: 20px;
-    height: 20px;
+/* .tick-box {
+    min-width: 20px;
+    min-height: 20px;
     border-radius: 4px;
     border: 2px solid #7F7F7F;
 }
@@ -89,15 +100,83 @@ margin-bottom: 62px;
     width: 20px;
     height: 20px;
     border-radius: 4px;
-    border: 2px solid rgb(52, 64, 236);
-}
+    border: 2px solid rgb(77, 77, 77);
+} */
 
-.checkbox-label {
+.checkbox-container {
+    display: block;
+    position: relative;
+    padding-left: 30px;
+    cursor: pointer;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    -ms-user-select: none;
     color: #7F7F7F;	
     font-family: 'Roboto', sans-serif;
     font-weight: regular;
     font-size: 20px;	
-    line-height: 20px; /*  накосячил, не поймуд как выровнять с чекбоксом */
     padding-bottom: 15px;
-    padding-left: 10px;
+}
+
+.checkbox-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    border: 2px solid #7F7F7F;	border-radius: 6px;
+  }
+
+.checkbox-container:hover input ~ .checkmark { /* как это работает */
+    border: 2px solid rgb(92, 92, 92);	
+    border-radius: 6px;
+  }
+
+.checkbox-container input:checked ~ .checkmark {
+    background-color: rgb(8, 8, 8);
+    border: 0px solid #7F7F7F;	
+    border-radius: 6px;
+
+  }
+
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+
+.checkbox-container input:checked ~ .checkmark:after {
+    display: block;
+
+  }
+
+.checkbox-container .checkmark:after {
+    left: 6px;
+    top: 2px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+
+  }
+
+.card-body-title input {
+    border: 0px;
+    color: #7F7F7F;	
+    font-family: 'Roboto', sans-serif;
+    font-weight: regular;
+    font-size: 20px;	
 }
